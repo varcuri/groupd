@@ -1,10 +1,9 @@
-CREATE SEQUENCE mve_seq;
-
 CREATE TABLE movies
 (
-    mve_id NUMBER DEFAULT mve_seq.NEXTVAL PRIMARY KEY,
-    genre VARCHAR2(20),
-    release_dt CHAR(4)
+    mve_id NUMBER PRIMARY KEY,
+    title VARCHAR2(400) NOT NULL,
+    genre VARCHAR2(20) DEFAULT NULL,
+    release_dt CHAR(4) DEFAULT NULL
 );
 
 CREATE SEQUENCE itm_seq;
@@ -20,14 +19,14 @@ CREATE TABLE items
             REFERENCES movies (mve_id)      
 );
 
-CREATE SEQUENCE atr_seq;
 
 CREATE TABLE actors
 (
-    atr_id NUMBER DEFAULT atr_seq.NEXTVAL PRIMARY KEY,
+    atr_id NUMBER PRIMARY KEY,
     last_name VARCHAR2(30),
     first_name VARCHAR2(30) NOT NULL,
-    dob DATE DEFAULT NULL
+    dob DATE DEFAULT NULL,
+    real_name VARCHAR2(30) DEFAULT NULL,
 );
 
 CREATE TABLE appearances

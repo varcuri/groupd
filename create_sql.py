@@ -37,11 +37,12 @@ def add_actor(name, mve_id, actor_dict=actor_dict, appearance=appearance, itr=it
     appearance[actor_id].append(mve_id)
 
 
-def write_movies(mve_id, genre, release):
+def write_movies(mve_id, title, genre, release):
     """Appends to movies.sql file must delete entries in this file before running."""
     with open("movies.sql", "a") as f:
-        string = f"INSERT INTO movies (mve_id, genre, release_dt)\n"
-        string += f"\tVALUES ({mve_id}, '{genre}', '{release}');\n"
+        title = title.replace("'", "")
+        string = f"INSERT INTO movies (mve_id, title, genre, release_dt)\n"
+        string += f"\tVALUES ({mve_id}, '{title}', '{genre}', '{release}');\n"
         f.write(string)
 
 def write_items(mve_id):
@@ -99,7 +100,7 @@ for row in reader:
     add_actor(star1, count_rows)
     add_actor(star2, count_rows)
     # Write to SQL files
-    write_movies(mve_id, genre, year)
+    write_movies(mve_id, title, genre, year)
     write_items(mve_id)
     count_rows += 1
     # Do First 25 items
