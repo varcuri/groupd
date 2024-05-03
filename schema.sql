@@ -26,7 +26,7 @@ CREATE TABLE actors
     last_name VARCHAR2(30),
     first_name VARCHAR2(30) NOT NULL,
     dob DATE DEFAULT NULL,
-    real_name VARCHAR2(30) DEFAULT NULL,
+    real_name VARCHAR2(30) DEFAULT NULL
 );
 
 CREATE TABLE appearances
